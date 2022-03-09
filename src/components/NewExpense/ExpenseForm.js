@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import "./ExpenseForm.css";
+import React, { useState } from 'react';
+import './ExpenseForm.css';
 
-const ExpenseForm = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const titleChangeHandler = (e) => {
+const ExpenseForm = props => {
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const titleChangeHandler = e => {
     setEnteredTitle(e.target.value);
   };
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const amountChangeHandler = (e) => {
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const amountChangeHandler = e => {
     setEnteredAmount(e.target.value);
   };
-  const [enteredDate, setEnteredDate] = useState("");
-  const dateChangeHandler = (e) => {
+  const [enteredDate, setEnteredDate] = useState('');
+  const dateChangeHandler = e => {
     setEnteredDate(e.target.value);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = event => {
     event.preventDefault();
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    props.onSaveExpenseData(expenseData)
-    setEnteredTitle("");
-    setEnteredAmount("");
-    setEnteredDate("");
+    props.onSaveExpenseData(expenseData);
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('');
   };
 
   return (
@@ -65,6 +65,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onStopEditing}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
